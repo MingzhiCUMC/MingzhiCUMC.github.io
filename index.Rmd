@@ -1,0 +1,16 @@
+---
+title: "Welcome to My website!"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+
+## This is Mingzhi Chen's website
+
+Here's my favorite Bang Bang!
+![](images/bb.jpg)
+
+## Something about me
+I'm currently a graduate student in Columbia university major in biostatistics. More in formation is here:[About me](about.html).

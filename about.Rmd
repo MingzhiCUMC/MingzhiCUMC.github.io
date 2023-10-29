@@ -1,0 +1,34 @@
+---
+title: "About me"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+
+## Here is my resume.
+
+### Education
+
+* 09/2019-06/2023----Economic statistics, School of Statistics, Renmin University of China
+
+* 09/2023-Present----Biostatistics, Mailman School of Public Health, Columbia University
+
+### Research Interests
+
+* Non/semi-parametric models
+
+* Epidemiology
+
+* Bayesian inference
+
+### Research Experiences
+* FinTech-Deep Learning Modeling Of Financial Data   
+Mentor: Prof. Yang Li ｜Renmin Univ.; Associate Prof. Yichen Qin｜Univ. of Cincinnati
+
+* Dissertation: Distributed estimation method and application of density ratio model.  
+Mentor: Associate Prof.Cunjie Lin｜Renmin Univ.
+
+### Internship
+* 07/2022-09/2022----Data analyst, Consumer finance department, [JDT](https://www.jdt.com.cn/)
