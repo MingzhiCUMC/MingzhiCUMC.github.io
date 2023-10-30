@@ -1,0 +1,65 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(p8105.datasets)
+library(tidyverse)
+library(plotly)
+```
+
+```{r}
+data("instacart")
+set.seed(66)
+order=unique(instacart|>pull(order_id))
+data_sample=instacart|>
+  filter(order_id %in% sample(order,5000))
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+data_sample |> 
+  count(aisle,name="n_items")|>
+  arrange(desc(n_items))|>
+  filter(n_items>500)|>
+  mutate(aisle = forcats::fct_reorder(aisle, desc(n_items)))|>
+  plot_ly(y=~n_items,x=~aisle,color = ~aisle,type = "bar",colors = "viridis")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+top_aisle=data_sample |> 
+  count(aisle,name="n_items")|>
+  arrange(desc(n_items))|>
+  filter(n_items>1000)|>
+  pull(aisle)
+data_sample|>
+  filter(aisle %in% top_aisle)|>
+  plot_ly(y = ~order_hour_of_day, color = ~aisle, type = "box", colors = "viridis")
+```
+
+### Chart C
+
+```{r}
+data_sample|>
+  mutate(order_dow=recode(order_dow,
+                          "0"="Sunday","1"="Monday","2"="Tuesday","3"="Wednesday","4"="Thursday","5"="Friday","6"="Saturdy"))|>
+  mutate(order_dow=forcats::fct_relevel(order_dow,c("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturdy")))|>
+  count(order_dow,name="n_items")|>
+  plot_ly(y=~n_items,x=~order_dow,color = ~order_dow, type = "scatter",colors = "viridis",mode="markers")
+```
+

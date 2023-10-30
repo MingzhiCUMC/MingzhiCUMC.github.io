@@ -9,7 +9,7 @@ output:
 
 ## This is Mingzhi Chen's website
 
-Here's my favorite Bang Bang!
+Here's my favorite, Bang Bang!
 ![](images/bb.jpg)
 
 ## Something about me

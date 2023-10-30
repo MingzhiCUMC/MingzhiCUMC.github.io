@@ -5,10 +5,12 @@ navbar:
   right:
     - text: "About"
       href: about.html
+    - text: "Dashboard"
+      href: dashboard.html
     - icon: fa-envelope fa-lg
       href: mailto:<chenmingzhi6@outlook.com>
     - icon: fa-github fa-lg
       href: http://github.com/MingzhiCUMC/
 output:
   html_document:
-    theme: cerulean
+    theme: flatly
