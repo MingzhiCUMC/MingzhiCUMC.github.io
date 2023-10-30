@@ -1,14 +1,13 @@
 ---
-title: "Dashboard"
+title: "plotly"
 output: 
-  flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
-    source: embed
+  html_document:
+    toc: true
+    toc_float: true
+
 ---
 
-```{r setup, include=FALSE}
-library(flexdashboard)
+```{r}
 library(p8105.datasets)
 library(tidyverse)
 library(plotly)
@@ -19,41 +18,32 @@ data("instacart")
 set.seed(66)
 order=unique(instacart|>pull(order_id))
 data_sample=instacart|>
-  filter(order_id %in% sample(order,1000))
+  filter(order_id %in% sample(order,5000))
 ```
 
-Column {data-width=650}
------------------------------------------------------------------------
-
-### Chart A
-
+### histogram
 ```{r}
 data_sample |> 
   count(aisle,name="n_items")|>
   arrange(desc(n_items))|>
-  filter(n_items>100)|>
+  filter(n_items>500)|>
   mutate(aisle = forcats::fct_reorder(aisle, desc(n_items)))|>
   plot_ly(y=~n_items,x=~aisle,color = ~aisle,type = "bar",colors = "viridis")
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
-
+### boxplots
 ```{r}
 top_aisle=data_sample |> 
   count(aisle,name="n_items")|>
   arrange(desc(n_items))|>
-  filter(n_items>200)|>
+  filter(n_items>1000)|>
   pull(aisle)
 data_sample|>
   filter(aisle %in% top_aisle)|>
   plot_ly(y = ~order_hour_of_day, color = ~aisle, type = "box", colors = "viridis")
 ```
 
-### Chart C
-
+### line
 ```{r}
 data_sample|>
   mutate(order_dow=recode(order_dow,

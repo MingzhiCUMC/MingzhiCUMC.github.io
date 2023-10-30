@@ -16,7 +16,7 @@ output:
 
 ### Research Interests
 
-* Non/semi-parametric models
+* Non/semi-parametric model
 
 * Epidemiology
 
