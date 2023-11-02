@@ -25,7 +25,7 @@ data_sample=instacart|>
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### The most popular aisles
 
 ```{r}
 data_sample |> 
@@ -39,7 +39,7 @@ data_sample |>
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### The order hour of the day among popular aisles
 
 ```{r}
 top_aisle=data_sample |> 
@@ -52,7 +52,7 @@ data_sample|>
   plot_ly(y = ~order_hour_of_day, color = ~aisle, type = "box", colors = "viridis")
 ```
 
-### Chart C
+### The number of orders in each weekday
 
 ```{r}
 data_sample|>
